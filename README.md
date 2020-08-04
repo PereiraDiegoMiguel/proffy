@@ -12,3 +12,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Added Google fonts
 
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&family=Poppins&display=swap" rel="stylesheet">
+
+## Dependencies
+react-router-dom 
+@types/react-router-dom
