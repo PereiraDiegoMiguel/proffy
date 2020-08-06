@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageHeader from '../../components/PageHeader';
 import './styles.css';
 import Input from '../../components/Input';
@@ -7,6 +7,23 @@ import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
 
 function TeacherForm() {
+
+  const [schedulerItems, setScheduleItems] = useState([
+    { week_day: 0, from: '', to: '' },
+  ]);
+
+  function addNewScheduleItem() {
+    setScheduleItems([
+      ...schedulerItems,
+      {
+        week_day: 0,
+        from: '',
+        to: ''
+      }
+    ]);
+  }
+
+
   return (
     <div id="page-teacher-form" className="container">
       <PageHeader
@@ -43,31 +60,35 @@ function TeacherForm() {
 
         <fieldset>
           <legend> Horários disponíveis
-            <button type="button">+ Novo horário</button>
+            <button type="button" onClick={addNewScheduleItem}>+ Novo horário</button>
           </legend>
+
+          {schedulerItems.map(scheduleItem => {
+            return (
+              <div key={scheduleItem.week_day} className="schedule-item">
+
+                <Select
+                  name="week_day"
+                  label="Dia da semana"
+                  options={[
+                    { value: '1', label: 'Domingo' },
+                    { value: '2', label: 'Segunda-feira' },
+                    { value: '3', label: 'Terça-feira' },
+                    { value: '4', label: 'Quarta-feira' },
+                    { value: '5', label: 'Quinta-feira' },
+                    { value: '6', label: 'Sexta-feira' },
+                    { value: '7', label: 'Sábado' },
+                  ]}
+                />
+
+                <Input type="time" name="from" label="Das" />
+                <Input type="time" name="to" label="Até" />
+
+              </div>
+            )
+          })}
+
         </fieldset>
-
-        <div className="schedule-item">
-
-          <Select
-            name="week_day"
-            label="Dia da semana"
-            options={[
-              { value: '1', label: 'Domingo' },
-              { value: '2', label: 'Segunda-feira' },
-              { value: '3', label: 'Terça-feira' },
-              { value: '4', label: 'Quarta-feira' },
-              { value: '5', label: 'Quinta-feira' },
-              { value: '5', label: 'Sexta-feira' },
-              { value: '6', label: 'Sábado' },
-            ]}
-          />
-
-          <Input type="time" name="from" label="Das" />
-          <Input type="time" name="to" label="Até" />
-
-        </div>
-
         <footer>
           <p>
             <img src={warningIcon} alt="Aviso Importante" />
