@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from 'react';
-import './styless.css';
+import './styles.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
