@@ -45,6 +45,11 @@
   margin-top: 6.4rem;
 }
 
+#page-teacher-form main label {
+  color: var(--color-text-complement);
+}
+
+
 #page-teacher-form  main footer p {
   display: flex;
   align-items: center;
